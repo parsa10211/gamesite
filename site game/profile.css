@@ -1,0 +1,493 @@
+/* ================================================= */
+/* --- 1. Base Styles & Global Utilities (استایل‌های پایه) --- */
+/* ================================================= */
+body {
+    margin: 0;
+    background: #111;
+    font-family: 'Tahoma', sans-serif; /* فونت پیشنهادی برای خوانایی بهتر فارسی */
+    color: #fff;
+    direction: rtl; /* اطمینان از راست به چپ بودن صفحه */
+}
+
+.container {
+    max-width: 1200px; /* عرض اصلی برای صفحه فروشگاه */
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+/* اگر در صفحه پروفایل استفاده شود */
+.profile-main .container {
+    max-width: 800px; /* عرض کمتر برای صفحه پروفایل */
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    border-right: 4px solid #ff5ca7; /* خط کناری برای زیبایی RTL */
+    padding-right: 15px;
+    margin-bottom: 30px;
+}
+
+/* ================================================= */
+/* --- 2. Header & Navigation (استایل‌های هدر و آیکون‌ها) --- */
+/* ================================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 50px;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #8f00ff, 0 0 20px #00d5ff; /* Glow Effect */
+}
+
+.nav-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.icon-box i {
+    font-size: 21px;
+    padding: 13px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.icon-box span {
+    margin-top: 6px;
+    color: #dcdcdc;
+    font-size: 12px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: 0.3s;
+}
+
+/* رنگ‌بندی آیکون‌ها */
+.search i, .menu i { background: #ff5ca7; color: #fff; } /* منو و جستجو */
+.profile i, .telegram i { background: #77b3ff; color: #fff; } /* پروفایل */
+.cart i { background: #ff5ca7; color: #fff; }
+
+.icon-box:hover i {
+    transform: translateY(-6px);
+    box-shadow: 0 0 18px rgba(255,255,255,0.5);
+}
+
+.icon-box:hover span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile Responsiveness for Header */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+    .logo {
+        font-size: 24px;
+    }
+    .nav-icons {
+        gap: 10px;
+    }
+    .icon-box i {
+        font-size: 18px;
+        padding: 10px;
+    }
+    .icon-box span {
+        display: none;
+    }
+}
+
+/* ================================================= */
+/* --- 3. Profile Page & Form Styles (استایل‌های پروفایل) --- */
+/* ================================================= */
+.profile-main {
+    padding-top: 40px;
+    text-align: right;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #77b3ff;
+    font-size: 16px;
+    margin-bottom: 30px;
+    transition: color 0.3s;
+}
+
+.back-btn:hover {
+    color: #ff5ca7;
+}
+
+.profile-card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #222;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.form-label {
+    font-size: 16px;
+    color: #dcdcdc;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.form-input {
+    background: #222;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #77b3ff;
+    box-shadow: 0 0 8px rgba(119, 179, 255, 0.5);
+}
+
+/* دکمه‌های اصلی و ثانویه */
+.btn-primary {
+    background: #ff5ca7;
+    color: #111;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background: #ff7ccc;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #333;
+    color: #dcdcdc;
+    border: 1px solid #555;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.btn-secondary:hover {
+    background: #8f00ff;
+    color: #fff;
+}
+
+.output-message {
+    background: #0d0d0d;
+    border: 1px dashed #77b3ff;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ریسپانسیو برای کارت پروفایل */
+@media (max-width: 500px) {
+    .profile-card {
+        padding: 20px;
+    }
+    .btn-primary {
+        font-size: 16px;
+    }
+}
+
+
+/* ================================================= */
+/* --- 4. Sidebar Menu (منوی کناری) --- */
+/* ================================================= */
+.sidebar-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000; 
+    top: 0;
+    right: 0;
+    background-color: #1a1a1a; 
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.sidebar-menu.open {
+    width: 280px; 
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #222;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    color: #77b3ff; 
+    margin: 0;
+    padding-right: 10px;
+    border-right: 3px solid #77b3ff;
+}
+
+.close-btn {
+    font-size: 30px;
+    color: #dcdcdc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff5ca7; 
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.menu-list li a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+    border-right: 3px solid transparent;
+}
+
+.menu-list li a:hover {
+    background-color: #222;
+    color: #ff5ca7;
+    border-right: 3px solid #ff5ca7;
+}
+
+@media (max-width: 500px) {
+    .sidebar-menu.open {
+        width: 80%;
+    }
+}
+
+
+/* ================================================= */
+/* --- 5. Product Card Overrides (اصلاحات کارت محصول) --- */
+/* ================================================= */
+.flag-overlay {
+    width: 100%;
+    height: 140px; /* افزایش ارتفاع برای فضای بهتر */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* **اصلاح اصلی:** پوشاندن کامل محفظه */
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.steam-card:hover .flag-image {
+    opacity: 1;
+}
+
+/* ================================================= */
+/* --- 6. Search Modal (مودال جستجو) --- */
+/* ================================================= */
+.search-modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+    transition: opacity 0.3s;
+}
+
+.search-modal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: auto;
+    padding: 40px 30px;
+    border: 1px solid #333;
+    width: 90%; 
+    max-width: 700px;
+    border-radius: 15px;
+    position: relative;
+    text-align: right;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal-btn {
+    color: #dcdcdc;
+    float: left; 
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: #ff5ca7;
+    text-decoration: none;
+}
+
+.search-box-wrapper h2 {
+    color: #77b3ff;
+    font-size: 24px;
+    margin-bottom: 25px;
+    border-right: 3px solid #77b3ff;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+.search-form-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.search-input-modal {
+    padding: 15px;
+    border: 2px solid #555;
+    border-radius: 10px;
+    font-size: 18px;
+    background: #222;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-input-modal:focus {
+    border-color: #ff5ca7;
+}
+
+.search-btn-modal {
+    background: #ff5ca7;
+    color: #111;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-btn-modal:hover {
+    background: #ff7ccc;
+}
+
+.popular-searches h4 {
+    color: #dcdcdc;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background: #333;
+    color: #77b3ff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.tag:hover {
+    background: #77b3ff;
+    color: #111;
+}
+
+@media (max-width: 500px) {
+    .modal-content {
+        padding: 25px 15px;
+    }
+    .search-input-modal {
+        font-size: 16px;
+    }
+}

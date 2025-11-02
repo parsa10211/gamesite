@@ -1,0 +1,638 @@
+/* --- 1. Base Styles & Global Utilities --- */
+body {
+  margin: 0;
+  background: #111;
+  font-family: 'Tahoma', sans-serif; /* فونت پیشنهادی برای خوانایی بهتر فارسی */
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  border-right: 4px solid #ff5ca7; /* خط کناری برای زیبایی RTL */
+  padding-right: 15px;
+  margin-bottom: 30px;
+}
+
+/* --- 2. Header & Navigation --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #8f00ff, 0 0 20px #00d5ff; /* Glow Effect */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon-box i {
+  font-size: 21px;
+  padding: 13px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.icon-box span {
+  margin-top: 6px;
+  color: #dcdcdc;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: 0.3s;
+}
+
+.search i, .menu i { background: #e0e0e0; color: #303030; }
+.profile i, .telegram i { background: #77b3ff; color: #fff; }
+.cart i { background: #ff5ca7; color: #fff; }
+
+.icon-box:hover i {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(255,255,255,0.5);
+}
+
+.icon-box:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness for Header */
+@media (max-width: 768px) {
+  .header {
+      padding: 15px 20px;
+  }
+  .logo {
+      font-size: 24px;
+  }
+  .nav-icons {
+      gap: 10px;
+  }
+  .icon-box i {
+      font-size: 18px;
+      padding: 10px;
+  }
+  .icon-box span {
+      display: none;
+  }
+}
+
+/* --- 4. Category Cards --- */
+.category-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+.category-card {
+  min-width: 150px;
+  background: #222;
+  border-radius: 12px;
+  text-align: center;
+  padding: 15px 10px;
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.category-card i {
+  font-size: 35px;
+  color: #77b3ff;
+  margin-bottom: 10px;
+}
+
+.category-card span {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.category-card:hover {
+  background: #333;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* New Category Sample Style - FIXED */
+.category-card.sample {
+  background: #331133;
+  border: 2px dashed #ff5ca7;
+  opacity: 0.7;
+  transition: none;
+}
+.category-card.sample:hover {
+  transform: none;
+  box-shadow: none;
+  opacity: 1; 
+}
+
+
+/* --- 5. Steam Wallet Section (بر اساس تصویر شما) --- */
+
+.steam-wallets-section {
+  padding: 40px 0;
+}
+
+.steam-main-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.steam-grid {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.steam-card {
+  min-width: 200px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  text-align: center;
+  position: relative;
+  border: 1px solid #333;
+  text-decoration: none;
+  color: #fff;
+  flex-shrink: 0;
+  padding-bottom: 15px;
+}
+
+.steam-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), 0 0 15px #00d5ff50;
+}
+
+.card-header {
+  background: #363636;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.flag-overlay {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.flag-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.steam-card:hover .flag-image {
+  opacity: 1;
+}
+
+.region-name {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+  z-index: 2;
+}
+
+.region-description {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.price-box {
+  background: #0d0d0d;
+  border-radius: 8px;
+  padding: 10px;
+  display: inline-block;
+  margin-top: 5px;
+  min-width: 80%;
+}
+
+.old-price {
+  font-size: 12px;
+  color: #ff5ca7;
+  text-decoration: line-through;
+  margin-bottom: 3px;
+  direction: ltr;
+}
+
+.current-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  direction: ltr; /* قیمت را چپ به راست نمایش می‌دهد */
+}
+
+/* --- 6. Product Cards --- */
+.product-grid {
+  display: grid;
+  /* این مقدار را کاهش دهید تا عرض کارت‌ها کمتر شود */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  gap: 30px;
+}
+
+/* ... بقیه استایل ها دست نخورده باقی می‌مانند ... */
+
+.product-card {
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  color: #fff;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(143,0,255,0.25);
+}
+
+.product-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 15px;
+  text-align: right;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  
+  /* --- تنظیمات جدید برای نمایش در حداکثر ۲ خط --- */
+  display: -webkit-box; /* برای نمایش چند خطی */
+  -webkit-line-clamp: 2; /* تعداد خطوط مجاز */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* پنهان کردن متن اضافی */
+  text-overflow: ellipsis; /* نمایش سه نقطه در صورت نیاز */
+}
+
+.product-price {
+  font-size: 18px;
+  color: #ff5ca7;
+  font-weight: bold;
+  direction: ltr;
+}
+
+/* New Product Sample Styles - FIXED */
+.product-card.sample {
+  background: #331a33;
+  border: 2px dashed #77b3ff;
+  opacity: 0.7;
+  transition: none;
+  cursor: default; /* جلوگیری از تغییر نشانگر موس */
+}
+
+.product-card.sample:hover {
+  transform: none;
+  box-shadow: none;
+  opacity: 1; 
+}
+
+.product-card.sample .add-button {
+  background: #77b3ff;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  cursor: pointer;
+}
+
+/* --- 7. Footer --- */
+.footer {
+  background: #0d0d0d;
+  padding: 40px 50px 20px;
+  margin-top: 50px;
+  border-top: 1px solid #222;
+  text-align: right;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #222;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-column {
+  width: 20%;
+  min-width: 150px;
+  margin-bottom: 20px;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  color: #77b3ff;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Media Queries for Footer */
+@media (max-width: 768px) {
+  .footer {
+      padding: 30px 20px 10px;
+  }
+  .footer-content {
+      flex-direction: column;
+  }
+  .footer-column {
+      width: 100%;
+  }
+}
+
+/* --- استایل‌های جدید برای منوی کناری (Sidebar Menu) --- */
+
+/* مطمئن شوید این خطوط در CSS اصلی شما هستند: */
+.menu i { background: #ff5ca7; color: #fff; } 
+.icon-box:hover i { transform: translateY(-6px); box-shadow: 0 0 18px rgba(255,255,255,0.5); }
+.icon-box:hover span { opacity: 1; transform: translateY(0); }
+
+
+.sidebar-menu {
+    height: 100%;
+    width: 0; /* به طور پیش‌فرض مخفی است */
+    position: fixed;
+    z-index: 1000; 
+    top: 0;
+    right: 0;
+    background-color: #1a1a1a; 
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px; /* فضای بالای هدر منو */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.sidebar-menu.open {
+    width: 280px; /* عرض هنگام باز بودن */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    position: absolute;
+    top: 0;
+    left: 0; /* در RTL، دکمه بستن در سمت چپ است */
+    width: 100%;
+    box-sizing: border-box; /* اطمینان از محاسبات درست عرض */
+    border-bottom: 1px solid #222;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    color: #77b3ff; 
+    margin: 0;
+    padding-right: 10px;
+    border-right: 3px solid #77b3ff;
+}
+
+.close-btn {
+    font-size: 30px;
+    color: #dcdcdc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff5ca7; 
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.menu-list li a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+    border-right: 3px solid transparent;
+}
+
+.menu-list li a:hover {
+    background-color: #222;
+    color: #ff5ca7;
+    border-right: 3px solid #ff5ca7;
+}
+
+/* در موبایل عرض منو را بیشتر می‌کنیم */
+@media (max-width: 500px) {
+    .sidebar-menu.open {
+        width: 80%; /* در موبایل 80 درصد صفحه را بگیرد */
+    }
+}
+
+/* --- استایل‌های جدید برای نوار جستجوی کشویی (Drop-down Search) --- */
+
+.search-drop-down {
+  /* موقعیت ثابت زیر هدر */
+  position: absolute; /* برای قرارگیری دقیق زیر هدر، اگر هدر position: fixed نیست */
+  top: 90px; /* فاصله از بالای صفحه (حدود ارتفاع هدر) */
+  right: 0;
+  width: 100%;
+  background: #1a1a1a;
+  border-bottom: 2px solid #ff5ca7;
+  z-index: 999; /* زیر سایدبار */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  
+  /* مخفی سازی اولیه و انیمیشن */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in;
+}
+
+/* حالت باز شدن نوار جستجو */
+.search-drop-down.open {
+  max-height: 500px; /* فضای کافی برای نمایش نتایج */
+  opacity: 1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.drop-down-form {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.drop-down-input {
+  flex-grow: 1;
+  border: none;
+  padding: 12px 15px;
+  font-size: 16px;
+  background: #0d0d0d;
+  color: #fff;
+  outline: none;
+  text-align: right;
+}
+
+.drop-down-btn {
+  background: #ff5ca7;
+  color: #fff;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.drop-down-btn:hover {
+  background: #ff4099;
+}
+
+
+/* --- استایل‌های نتایج جستجوی پویا --- */
+
+.drop-down-results {
+  max-height: 300px; /* محدودیت ارتفاع برای نمایش نتایج */
+  overflow-y: auto; /* اسکرول عمودی در صورت زیاد بودن نتایج */
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #333;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.search-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  background: #252525;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.search-result-item:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.result-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.result-price {
+  font-size: 15px;
+  color: #77b3ff;
+  direction: ltr; /* قیمت چپ به راست باشد */
+}
+
+.no-results {
+  text-align: center;
+  color: #aaa;
+  padding: 15px;
+  font-style: italic;
+}

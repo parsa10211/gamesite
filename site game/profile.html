@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>پروفایل کاربر</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">پروفایل</div>
+    <div class="nav-icons">
+        <a href="#" class="icon-box profile">
+            <i class="fas fa-user"></i> 
+            <span>کاربر</span>
+        </a>
+    </div>
+</header>
+
+<div class="container">
+    <main class="profile-main">
+        <a href="Pars-gift-site.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i> برگشت به خانه 
+        </a>
+
+        <h2 class="section-title">اطلاعات شما</h2>
+        
+        <div class="profile-card">
+            <form id="profileForm" class="profile-form">
+                
+                <label for="firstName" class="form-label">نام</label>
+                <input type="text" id="firstName" placeholder="مثال: پارسا" class="form-input">
+
+                <label for="lastName" class="form-label">نام خانوادگی</label>
+                <input type="text" id="lastName" placeholder="مثال: رضایی" class="form-input">
+
+                <label for="phone" class="form-label">شماره تماس</label>
+                <input type="text" id="phone" placeholder="مثال: 09123456789" class="form-input">
+
+                <button type="submit" class="save-btn btn-primary">ذخیره اطلاعات</button>
+            </form>
+
+            <div id="output" class="output-message"></div>
+
+            <button id="logoutBtn" class="logout-btn btn-secondary">خروج</button>
+        </div>
+    </main>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="auth-local.js"></script>
+<script>
+// ... (Your original JavaScript code remains unchanged)
+const user = getCurrentUser();
+if (!user) {
+    window.location.href = 'login.html';
+}
+
+// بارگذاری اطلاعات ذخیره شده
+const savedProfile = JSON.parse(localStorage.getItem('profile_' + user.username) || '{}');
+if(savedProfile.first) document.getElementById('firstName').value = savedProfile.first;
+if(savedProfile.last) document.getElementById('lastName').value = savedProfile.last;
+if(savedProfile.phone) document.getElementById('phone').value = savedProfile.phone;
+
+// نمایش خروجی اگر اطلاعات موجود باشه
+if(savedProfile.first && savedProfile.last && savedProfile.phone){
+    document.getElementById('output').textContent = 
+        `نام: ${savedProfile.first} | نام خانوادگی: ${savedProfile.last} | شماره تماس: ${savedProfile.phone}`;
+}
+
+// ذخیره اطلاعات در localStorage
+document.getElementById('profileForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const first = document.getElementById('firstName').value.trim();
+    const last = document.getElementById('lastName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if(!first || !last || !phone){
+        alert('لطفاً همه فیلدها را پر کنید.');
+        return;
+    }
+
+    const profileData = { first, last, phone };
+    localStorage.setItem('profile_' + user.username, JSON.stringify(profileData));
+
+    document.getElementById('output').textContent = 
+        `نام: ${first} | نام خانوادگی: ${last} | شماره تماس: ${phone}`;
+});
+
+// خروج
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    logoutLocal();
+    window.location.href = 'login.html';
+});
+</script>
+
+</body>
+</html>
