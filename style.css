@@ -1,0 +1,118 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+body {
+  margin: 0;
+  background: #0a0a0f;
+  font-family: sans-serif;
+}
+
+/* هدر */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  position: relative;
+  background: linear-gradient(90deg, #06060a, #101024, #06060a);
+  box-shadow: 0 0 40px rgba(155, 0, 255, .35);
+}
+
+/* نور زیر هدر */
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #8f00ff, #00d0ff, #8f00ff);
+  filter: blur(6px);
+}
+
+/* لوگو */
+.logo {
+  color: #fff;
+  font-size: 31px;
+  font-weight: bold;
+  text-shadow: 0 0 9px #b300ff, 0 0 18px #5d00ff;
+  animation: glowLogo 2s infinite alternate;
+}
+
+@keyframes glowLogo {
+  0% { text-shadow: 0 0 10px #8f00ff; }
+  100% { text-shadow: 0 0 20px #00d5ff; }
+}
+
+/* ایکون‌ها */
+.nav-icons {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+}
+
+.icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.icon-box i {
+  font-size: 20px;
+  padding: 13px;
+  border-radius: 50%;
+  transition: 0.25s;
+}
+
+/* رنگ‌ها */
+.search i, .menu i { background: #dadada; color: #303030; }
+.profile i, .telegram i { background: #62a7ff; color: #fff; }
+.cart i { background: #ff4ea0; color: #fff; }
+
+.icon-box span {
+  margin-top: 6px;
+  color: #cfcfcf;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: 0.25s;
+}
+
+/* هاور */
+.icon-box:hover i {
+  transform: translateY(-6px) scale(1.07);
+  box-shadow: 0 0 18px rgba(255,255,255,0.6),
+              0 0 25px rgba(120,0,255,0.7);
+}
+
+.icon-box:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .hero-banner {
+    display: flex;
+    justify-content: flex-start; /* سمت راست در RTL */
+    padding: 20px;               /* فاصله از لبه بالا و چپ/راست */
+  }
+  
+  .hero-banner img {
+    width: 25%;             /* یک چهارم صفحه */
+    max-width: 300px;       /* محدودیت حداکثر اندازه */
+    border-radius: 20px;    /* گوشه گرد */
+    box-shadow: 0 0 20px rgba(145,0,255,0.45); /* سایه نئونی */
+    display: block;
+    height: auto;           /* حفظ نسبت تصویر */
+  }
+  
+  
+  
+  

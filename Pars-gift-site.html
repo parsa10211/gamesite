@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pars Gift | فروشگاه گیفت کارت و بازی‌های اورجینال</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* --- 1. Base Styles & Global Utilities --- */
+body {
+  margin: 0;
+  background: #111;
+  font-family: 'Tahoma', sans-serif; /* فونت پیشنهادی برای خوانایی بهتر فارسی */
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  border-right: 4px solid #ff5ca7; /* خط کناری برای زیبایی RTL */
+  padding-right: 15px;
+  margin-bottom: 30px;
+}
+
+/* --- 2. Header & Navigation --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #8f00ff, 0 0 20px #00d5ff; /* Glow Effect */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon-box i {
+  font-size: 21px;
+  padding: 13px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.icon-box span {
+  margin-top: 6px;
+  color: #dcdcdc;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: 0.3s;
+}
+
+.search i, .menu i { background: #e0e0e0; color: #303030; }
+.profile i, .telegram i { background: #77b3ff; color: #fff; }
+.cart i { background: #ff5ca7; color: #fff; }
+
+.icon-box:hover i {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(255,255,255,0.5);
+}
+
+.icon-box:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness for Header */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+  .logo {
+    font-size: 24px;
+  }
+  .nav-icons {
+    gap: 10px;
+  }
+  .icon-box i {
+    font-size: 18px;
+    padding: 10px;
+  }
+  .icon-box span {
+    display: none;
+  }
+}
+
+/* --- 3. Hero Banner --- */
+.hero-banner {
+  padding: 20px 50px;
+}
+
+.hero-banner img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(143,0,255,0.45);
+}
+
+/* --- 4. Category Cards --- */
+.category-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+.category-card {
+  min-width: 150px;
+  background: #222;
+  border-radius: 12px;
+  text-align: center;
+  padding: 15px 10px;
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.category-card i {
+  font-size: 35px;
+  color: #77b3ff;
+  margin-bottom: 10px;
+}
+
+.category-card span {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.category-card:hover {
+  background: #333;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- 5. Steam Wallet Section (بر اساس تصویر شما) --- */
+
+.steam-wallets-section {
+  padding: 40px 0;
+}
+
+.steam-main-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.steam-grid {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.steam-card {
+  min-width: 200px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  text-align: center;
+  position: relative;
+  border: 1px solid #333;
+  text-decoration: none;
+  color: #fff;
+  flex-shrink: 0;
+  padding-bottom: 15px;
+}
+
+.steam-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), 0 0 15px #00d5ff50;
+}
+
+.card-header {
+  background: #363636;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.flag-overlay {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.flag-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.steam-card:hover .flag-image {
+  opacity: 1;
+}
+
+.region-name {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+  z-index: 2;
+}
+
+.region-description {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.price-box {
+  background: #0d0d0d;
+  border-radius: 8px;
+  padding: 10px;
+  display: inline-block;
+  margin-top: 5px;
+  min-width: 80%;
+}
+
+.old-price {
+  font-size: 12px;
+  color: #ff5ca7;
+  text-decoration: line-through;
+  margin-bottom: 3px;
+  direction: ltr;
+}
+
+.current-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  direction: ltr; /* قیمت را چپ به راست نمایش می‌دهد */
+}
+
+/* --- 6. Product Cards --- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  color: #fff;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(143,0,255,0.25);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 15px;
+  text-align: right;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-price {
+  font-size: 18px;
+  color: #ff5ca7;
+  font-weight: bold;
+  direction: ltr;
+}
+
+/* --- 7. Footer --- */
+.footer {
+  background: #0d0d0d;
+  padding: 40px 50px 20px;
+  margin-top: 50px;
+  border-top: 1px solid #222;
+  text-align: right;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #222;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-column {
+  width: 20%;
+  min-width: 150px;
+  margin-bottom: 20px;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  color: #77b3ff;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Media Queries for Footer */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 20px 10px;
+  }
+  .footer-content {
+    flex-direction: column;
+  }
+  .footer-column {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">Pars Gift</div>
+
+  <nav class="nav-icons">
+    <a href="#" class="icon-box search">
+      <i class="fa fa-search"></i>
+      <span>جستجو</span>
+    </a>
+
+    <a href="#" class="icon-box menu">
+      <i class="fa fa-bars"></i>
+      <span>منو</span>
+    </a>
+
+    <a href="#" class="icon-box profile">
+      <i class="fa fa-user"></i>
+      <span>حساب</span>
+    </a>
+
+    <a href="#" class="icon-box cart">
+      <i class="fa fa-shopping-cart"></i>
+      <span>سبد خرید</span>
+    </a>
+
+    <a href="https://t.me/yourtelegramid" target="_blank" class="icon-box telegram">
+      <i class="fa fa-telegram"></i>
+      <span>تلگرام</span>
+    </a>
+  </nav>
+</header>
+
+<section class="hero-banner">
+    <img src="https://gamegifts.ir/wp-content/uploads/2025/10/Slider2-1.webp" alt="بنر اصلی" width="1024" height="576">
+</section>
+
+<div class="container">
+
+<section class="categories">
+    <h2 class="section-title">دسته بندی محصولات</h2>
+    <div class="category-grid">
+        <a href="#" class="category-card">
+            <i class="fa fa-steam"></i>
+            <span>استیم والت</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa fa-gift"></i>
+            <span>گیفت کارت</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-brands fa-playstation"></i>
+            <span>پلی استیشن</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa-brands fa-xbox"></i>
+            <span>ایکس باکس</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa fa-mobile-alt"></i>
+            <span>بازی موبایل</span>
+        </a>
+        <a href="#" class="category-card">
+            <i class="fa fa-gamepad"></i>
+            <span>اشتراک‌ها</span>
+        </a>
+    </div>
+</section>
+
+<hr style="border-color:#333; margin-top: 20px; margin-bottom: 40px;">
+
+<section class="steam-wallets-section">
+    <h2 class="steam-main-title">گیفت کارت استیم</h2>
+    
+    <div class="steam-grid">
+        
+        <a href="#" class="steam-card">
+            <div class="card-header">استیم والت</div>
+            <div class="flag-overlay">
+                <i class="fa-brands fa-steam card-icon"></i>
+                <img class="flag-image" src="https://via.placeholder.com/200x120/cc0000/ffffff?text=RUSSIAN+FLAG" alt="روسیه">
+                <span class="region-name">روسیه</span>
+            </div>
+            <div class="region-description">استیم والت روسیه</div>
+            <div class="price-box">
+                <div class="old-price">14,254 TOMAN</div>
+                <div class="current-price">1,640 TOMAN</div>
+            </div>
+        </a>
+
+        <a href="#" class="steam-card">
+            <div class="card-header">استیم والت</div>
+            <div class="flag-overlay">
+                <i class="fa-brands fa-steam card-icon"></i>
+                <img class="flag-image" src="https://via.placeholder.com/200x120/003466/ffffff?text=USA+FLAG" alt="آمریکا">
+                <span class="region-name">آمریکا</span>
+            </div>
+            <div class="region-description">استیم والت آمریکا</div>
+            <div class="price-box">
+                <div class="old-price">10,748 TOMAN</div>
+                <div class="current-price">83,000 TOMAN</div>
+            </div>
+        </a>
+        
+        <a href="#" class="steam-card">
+            <div class="card-header">استیم والت</div>
+            <div class="flag-overlay">
+                <i class="fa-brands fa-steam card-icon"></i>
+                <img class="flag-image" src="https://via.placeholder.com/200x120/ff9933/ffffff?text=INDIA+FLAG" alt="هند">
+                <span class="region-name">هند</span>
+            </div>
+            <div class="region-description">استیم والت هند</div>
+            <div class="price-box">
+                <div class="old-price">10,748 TOMAN</div>
+                <div class="current-price">83,000 TOMAN</div>
+            </div>
+        </a>
+        
+        <a href="#" class="steam-card">
+            <div class="card-header">استیم والت</div>
+            <div class="flag-overlay">
+                <i class="fa-brands fa-steam card-icon"></i>
+                <img class="flag-image" src="https://via.placeholder.com/200x120/0057b7/ffd700?text=UKRAINE+FLAG" alt="اوکراین">
+                <span class="region-name">اوکراین</span>
+            </div>
+            <div class="region-description">استیم والت اوکراین</div>
+            <div class="price-box">
+                <div class="old-price">10,748 TOMAN</div>
+                <div class="current-price">83,000 TOMAN</div>
+            </div>
+        </a>
+
+        <a href="#" class="steam-card">
+            <div class="card-header">استیم والت</div>
+            <div class="flag-overlay">
+                <i class="fa-brands fa-steam card-icon"></i>
+                <img class="flag-image" src="https://via.placeholder.com/200x120/00afc7/ffd700?text=KAZAKHSTAN+FLAG" alt="قزاقستان">
+                <span class="region-name">قزاقستان</span>
+            </div>
+            <div class="region-description">استیم والت قزاقستان</div>
+            <div class="price-box">
+                <div class="old-price">10,748 TOMAN</div>
+                <div class="current-price">83,000 TOMAN</div>
+            </div>
+        </a>
+
+        <a href="#" class="steam-card">
+            <div class="card-header">استیم والت</div>
+            <div class="flag-overlay">
+                <i class="fa-brands fa-steam card-icon"></i>
+                <img class="flag-image" src="https://via.placeholder.com/200x120/009739/ffd700?text=BRAZIL+FLAG" alt="برزیل">
+                <span class="region-name">برزیل</span>
+            </div>
+            <div class="region-description">استیم والت برزیل</div>
+            <div class="price-box">
+                <div class="old-price">10,748 TOMAN</div>
+                <div class="current-price">83,000 TOMAN</div>
+            </div>
+        </a>
+        
+    </div>
+</section>
+
+<hr style="border-color:#333; margin-top: 40px; margin-bottom: 40px;">
+
+<section class="featured-products">
+    <h2 class="section-title">جدیدترین محصولات</h2>
+    <div class="product-grid">
+        <a href="#" class="product-card">
+            <img src="https://gamegifts.ir/wp-content/uploads/2024/08/پلی-استیشن-گیفت-کارت.webp" alt="PlayStation Gift Card">
+            <div class="product-info">
+                <div class="product-title">گیفت کارت پلی استیشن ۱۰۰ دلاری</div>
+                <div class="product-price">1,250,000 تومان</div>
+            </div>
+        </a>
+        <a href="#" class="product-card">
+            <img src="https://via.placeholder.com/250x150/0078d4/ffffff?text=XBOX+GAME" alt="Xbox Game Pass">
+            <div class="product-info">
+                <div class="product-title">اشتراک ایکس باکس گیم پس (۳ ماهه)</div>
+                <div class="product-price">780,000 تومان</div>
+            </div>
+        </a>
+        <a href="#" class="product-card">
+            <img src="https://via.placeholder.com/250x150/000000/ffffff?text=STEAM+20" alt="Steam Wallet 20">
+            <div class="product-info">
+                <div class="product-title">استیم والت ۲۰ دلاری آمریکا</div>
+                <div class="product-price">550,000 تومان</div>
+            </div>
+        </a>
+        <a href="#" class="product-card">
+            <img src="https://via.placeholder.com/250x150/5856d6/ffffff?text=Apple+Card" alt="Apple Gift Card">
+            <div class="product-info">
+                <div class="product-title">گیفت کارت اپل ۵۰ دلاری</div>
+                <div class="product-price">950,000 تومان</div>
+            </div>
+        </a>
+    </div>
+</section>
+
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>لینک‌های مفید</h4>
+            <ul>
+                <li><a href="#">سوالات متداول</a></li>
+                <li><a href="#">نحوه خرید</a></li>
+                <li><a href="#">تماس با ما</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>محصولات اصلی</h4>
+            <ul>
+                <li><a href="#">استیم</a></li>
+                <li><a href="#">پلی استیشن</a></li>
+                <li><a href="#">ایکس باکس</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>درباره ما</h4>
+            <p style="font-size: 14px; color: #aaa;">
+                فروشگاه پارس گیفت با هدف ارائه سریع و مطمئن گیفت کارت و محصولات اورجینال بازی‌ها فعالیت می‌کند.
+            </p>
+        </div>
+        <div class="footer-column">
+            <h4>نماد اعتماد</h4>
+            <div style="background:#222; padding:10px; border-radius:8px; text-align:center; color: #77b3ff;">[محل قرارگیری نماد اعتماد الکترونیک]</div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 Pars Gift. تمام حقوق محفوظ است.
+    </div>
+</footer>
+
+</body>
+</html>
