@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد | پنل ادمین پارس گیفت</title>
+    
+    <link rel="stylesheet" href="pars-gift-site.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="admin-styles.css"> 
+    
+</head>
+<body>
+
+    <div class="admin-wrapper">
+        
+        <aside class="admin-sidebar">
+            <h2 class="admin-logo">Pars Gift Admin</h2>
+            <nav class="admin-nav">
+                <a href="admin.html" class="nav-item active"><i class="fa fa-shopping-basket"></i><span>سفارشات</span></a>
+                <a href="product-management.html" class="nav-item"><i class="fa fa-box-open"></i><span>محصولات</span></a>
+                <a href="#"><i class="fa fa-users"></i><span>کاربران</span></a>
+                <a href="#"><i class="fa fa-chart-line"></i><span>آمار و گزارشات</span></a>
+                <a href="#" class="logout-btn"><i class="fa fa-sign-out-alt"></i><span>خروج</span></a>
+            </nav>
+        </aside>
+
+        <main class="admin-content">
+            <header class="content-header">
+                <h1>داشبورد مدیریتی</h1>
+            </header>
+
+            <section class="stats-section">
+                <div class="stat-card">
+                    <i class="fa fa-hand-holding-usd"></i>
+                    <p>فروش امروز</p>
+                    <span class="stat-value">۲,۴۵۰,۰۰۰ <small>تومان</small></span>
+                </div>
+                <div class="stat-card">
+                    <i class="fa fa-shipping-fast"></i>
+                    <p>سفارشات جدید</p>
+                    <span class="stat-value">۷</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fa fa-box"></i>
+                    <p>محصولات کم‌موجودی</p>
+                    <span class="stat-value text-warning">۲</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fa fa-users"></i>
+                    <p>کاربران جدید (هفته)</p>
+                    <span class="stat-value">۳۴</span>
+                </div>
+            </section>
+
+            <section class="order-list-section">
+                <h2>📦 سفارشات در انتظار بررسی</h2>
+                
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>شماره سفارش</th>
+                                <th>نام مشتری</th>
+                                <th>تاریخ ثبت</th>
+                                <th>مبلغ کل</th>
+                                <th>وضعیت</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#9012</td>
+                                <td>علی محمدی</td>
+                                <td>۱۴۰۳/۰۸/۲۵</td>
+                                <td>۴۰۰,۰۰۰</td>
+                                <td><span class="status pending">در انتظار پرداخت</span></td>
+                                <td><button class="action-btn view-btn">مشاهده</button></td>
+                            </tr>
+                            <tr>
+                                <td>#9013</td>
+                                <td>سارا حسینی</td>
+                                <td>۱۴۰۳/۰۸/۲۵</td>
+                                <td>۱,۲۵۰,۰۰۰</td>
+                                <td><span class="status processing">در حال پردازش</span></td>
+                                <td><button class="action-btn view-btn">مشاهده</button></td>
+                            </tr>
+                            <tr>
+                                <td>#9014</td>
+                                <td>امیر کریمی</td>
+                                <td>۱۴۰۳/۰۸/۲۴</td>
+                                <td>۶۵۰,۰۰۰</td>
+                                <td><span class="status completed">تکمیل شده</span></td>
+                                <td><button class="action-btn view-btn">مشاهده</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="text-center">
+                    <a href="#" class="view-all-link">مشاهده همه سفارشات <i class="fa fa-angle-left"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

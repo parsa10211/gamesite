@@ -1,0 +1,219 @@
+/* --- استایل‌های عمومی ادمین پنل --- */
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #0d0d0d; 
+    color: #fff;
+    direction: rtl;
+}
+
+/* --- سایدبار ادمین --- */
+.admin-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background-color: #1a1a1a;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.admin-logo {
+    color: #ff5ca7; /* رنگ اصلی برند */
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #252525;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    color: #aaa;
+    text-decoration: none;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item i {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #77b3ff; /* رنگ آبی برای آیکون‌ها */
+}
+
+.nav-item:hover, .nav-item.active {
+    background: #252525;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* --- محتوای اصلی --- */
+.admin-content {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.content-header h1 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+/* --- ۱. بخش آمار (Stats) --- */
+.stats-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1 1 200px; /* تنظیم برای ریسپانسیو بودن */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card i {
+    font-size: 30px;
+    color: #ff5ca7;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 14px;
+    color: #aaa;
+    margin: 0;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.text-warning {
+    color: #ffc107; /* برای هشدار کم‌موجودی */
+}
+
+/* --- ۲. لیست سفارشات و جداول --- */
+.order-list-section h2 {
+    color: #77b3ff;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow-x: auto; /* برای جداول بزرگ در موبایل */
+    margin-bottom: 20px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid #252525;
+}
+
+.admin-table th {
+    background-color: #252525;
+    font-weight: bold;
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* دکمه‌های عملیات */
+.action-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+    background-color: #77b3ff; /* رنگ پیش‌فرض برای دکمه مشاهده */
+    color: #1a1a1a;
+}
+
+.action-btn:hover {
+    opacity: 0.8;
+}
+
+/* وضعیت‌های سفارش */
+.status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap; /* جلوگیری از شکستن کلمه */
+}
+
+.status.pending {
+    background-color: #ffc10733;
+    color: #ffc107;
+}
+
+.status.processing {
+    background-color: #77b3ff33;
+    color: #77b3ff;
+}
+
+.status.completed {
+    background-color: #28a74533;
+    color: #28a745;
+}
+
+.view-all-link {
+    color: #ff5ca7;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.view-all-link i {
+    margin-right: 5px;
+}
+
+/* --- ریسپانسیو موبایل --- */
+@media (max-width: 768px) {
+    .admin-wrapper {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+        padding: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .admin-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .nav-item {
+        flex-shrink: 0;
+    }
+    .admin-content {
+        padding: 20px 10px;
+    }
+    .stats-section {
+        flex-direction: column;
+    }
+    .stat-card {
+        flex-basis: 100%;
+    }
+}

@@ -123,3 +123,30 @@ document.addEventListener('keydown', (e) => {
         sidebar.classList.remove('open');
     }
 });
+
+// --- فعال سازی تب‌های توضیحات محصول ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.product-description-tabs .tab-btn');
+    const tabPanes = document.querySelectorAll('.product-description-tabs .tab-pane');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTabId = button.getAttribute('data-tab');
+            
+            // حذف کلاس فعال از همه دکمه‌ها و محتواها
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+
+            // فعال کردن دکمه کلیک شده
+            button.classList.add('active');
+
+            // نمایش محتوای مرتبط
+            const targetPane = document.getElementById(targetTabId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        });
+    });
+});
+

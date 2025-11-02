@@ -2,97 +2,74 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>پروفایل کاربر</title>
-    <link rel="stylesheet" href="profile.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اطلاعات حساب | پارس گیفت</title>
+
+    <link rel="stylesheet" href="pars-gift-site.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="user-panel-styles.css"> 
+
 </head>
 <body>
-
-<header class="header">
-    <div class="logo">پروفایل</div>
-    <div class="nav-icons">
-        <a href="#" class="icon-box profile">
-            <i class="fas fa-user"></i> 
-            <span>کاربر</span>
-        </a>
-    </div>
-</header>
-
-<div class="container">
-    <main class="profile-main">
-        <a href="Pars-gift-site.html" class="back-btn">
-            <i class="fas fa-arrow-right"></i> برگشت به خانه 
-        </a>
-
-        <h2 class="section-title">اطلاعات شما</h2>
-        
-        <div class="profile-card">
-            <form id="profileForm" class="profile-form">
-                
-                <label for="firstName" class="form-label">نام</label>
-                <input type="text" id="firstName" placeholder="مثال: پارسا" class="form-input">
-
-                <label for="lastName" class="form-label">نام خانوادگی</label>
-                <input type="text" id="lastName" placeholder="مثال: رضایی" class="form-input">
-
-                <label for="phone" class="form-label">شماره تماس</label>
-                <input type="text" id="phone" placeholder="مثال: 09123456789" class="form-input">
-
-                <button type="submit" class="save-btn btn-primary">ذخیره اطلاعات</button>
-            </form>
-
-            <div id="output" class="output-message"></div>
-
-            <button id="logoutBtn" class="logout-btn btn-secondary">خروج</button>
+    
+    <header class="header">
+        <div class="logo">Pars Gift</div>
+        <nav class="nav-icons">
+            <a href="profile.html" class="icon-box profile active-user-icon">
+                <i class="fa fa-user"></i>
+                <span>حساب</span>
+            </a>
+            </nav>
+    </header>
+    
+    <div class="container user-panel-container">
+        <div class="user-panel-header">
+            <h2>👋 خوش آمدید، [نام کاربر]</h2>
+            <p>اینجا می‌توانید اطلاعات حساب خود را مدیریت کنید.</p>
         </div>
-    </main>
-</div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<script src="auth-local.js"></script>
-<script>
-// ... (Your original JavaScript code remains unchanged)
-const user = getCurrentUser();
-if (!user) {
-    window.location.href = 'login.html';
-}
+        <div class="panel-layout">
+            
+            <aside class="panel-sidebar">
+                <nav class="user-nav">
+                    <a href="profile.html" class="user-nav-item active"><i class="fa fa-user-edit"></i><span>اطلاعات حساب</span></a>
+                    <a href="profile-orders.html" class="user-nav-item"><i class="fa fa-history"></i><span>سفارشات من</span></a>
+                    <a href="profile-address.html" class="user-nav-item"><i class="fa fa-map-marker-alt"></i><span>آدرس‌ها</span></a>
+                    <a href="#" class="user-nav-item logout-btn" id="logoutBtn"><i class="fa fa-sign-out-alt"></i><span>خروج از حساب</span></a>
+                </nav>
+            </aside>
+            
+            <main class="panel-content">
+                <h3>اطلاعات شخصی و رمز عبور</h3>
 
-// بارگذاری اطلاعات ذخیره شده
-const savedProfile = JSON.parse(localStorage.getItem('profile_' + user.username) || '{}');
-if(savedProfile.first) document.getElementById('firstName').value = savedProfile.first;
-if(savedProfile.last) document.getElementById('lastName').value = savedProfile.last;
-if(savedProfile.phone) document.getElementById('phone').value = savedProfile.phone;
+                <form id="infoForm" class="info-form">
+                    <h4 class="form-section-title">اطلاعات پایه</h4>
+                    <div class="form-group">
+                        <label for="fullName">نام و نام خانوادگی:</label>
+                        <input type="text" id="fullName" value="[نام کاربر]" class="form-input" required> 
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ایمیل (نام کاربری):</label>
+                        <input type="email" id="email" value="[ایمیل کاربر]" class="form-input" disabled>
+                    </div>
 
-// نمایش خروجی اگر اطلاعات موجود باشه
-if(savedProfile.first && savedProfile.last && savedProfile.phone){
-    document.getElementById('output').textContent = 
-        `نام: ${savedProfile.first} | نام خانوادگی: ${savedProfile.last} | شماره تماس: ${savedProfile.phone}`;
-}
-
-// ذخیره اطلاعات در localStorage
-document.getElementById('profileForm').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const first = document.getElementById('firstName').value.trim();
-    const last = document.getElementById('lastName').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-
-    if(!first || !last || !phone){
-        alert('لطفاً همه فیلدها را پر کنید.');
-        return;
-    }
-
-    const profileData = { first, last, phone };
-    localStorage.setItem('profile_' + user.username, JSON.stringify(profileData));
-
-    document.getElementById('output').textContent = 
-        `نام: ${first} | نام خانوادگی: ${last} | شماره تماس: ${phone}`;
-});
-
-// خروج
-document.getElementById('logoutBtn').addEventListener('click', () => {
-    logoutLocal();
-    window.location.href = 'login.html';
-});
-</script>
-
+                    <button type="submit" class="auth-btn btn-primary">ذخیره اطلاعات</button>
+                    
+                    <h4 class="form-section-title mt-40">تغییر رمز عبور</h4>
+                    <div class="form-group">
+                        <label for="newPass">رمز عبور جدید:</label>
+                        <input type="password" id="newPass" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPass">تکرار رمز عبور جدید:</label>
+                        <input type="password" id="confirmPass" class="form-input">
+                    </div>
+                    <button type="button" class="auth-btn btn-secondary">تغییر رمز</button>
+                </form>
+            </main>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script> 
 </body>
 </html>

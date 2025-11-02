@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سبد خرید شما | پارس گیفت</title>
+    <link rel="stylesheet" href="pars-gift-site.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    </head>
+<body>
+    
+    <header class="header">...</header>
+
+    <div class="container cart-page-container">
+        
+        <h1 class="page-title"><i class="fa fa-shopping-cart"></i> سبد خرید شما</h1>
+
+        <div class="cart-layout">
+            
+            <div class="cart-items-list">
+                
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="images/steam-card.jpg" alt="گیفت کارت استیم">
+                    </div>
+                    
+                    <div class="item-details">
+                        <h2 class="item-title">گیفت کارت ۵۰ دلاری استیم (Steam) اروپا</h2>
+                        <p class="item-meta">ریجن: اروپا | مقدار: ۵۰ دلاری</p>
+                        <button class="remove-item-btn"><i class="fa fa-times-circle"></i> حذف</button>
+                    </div>
+                    
+                    <div class="item-quantity">
+                        <label for="qty-1">تعداد:</label>
+                        <input type="number" id="qty-1" value="1" min="1" max="5">
+                    </div>
+                    
+                    <div class="item-price">
+                        <span class="price-label">قیمت واحد:</span>
+                        <span class="price-value">۲,۵۰۰,۰۰۰ تومان</span>
+                    </div>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="images/psn-100-us.jpg" alt="گیفت کارت پلی استیشن">
+                    </div>
+                    
+                    <div class="item-details">
+                        <h2 class="item-title">گیفت کارت ۱۰۰ دلاری پلی استیشن (PSN) آمریکا</h2>
+                        <p class="item-meta">ریجن: آمریکا | مقدار: ۱۰۰ دلاری</p>
+                        <button class="remove-item-btn"><i class="fa fa-times-circle"></i> حذف</button>
+                    </div>
+                    
+                    <div class="item-quantity">
+                        <label for="qty-2">تعداد:</label>
+                        <input type="number" id="qty-2" value="2" min="1" max="5">
+                    </div>
+                    
+                    <div class="item-price">
+                        <span class="price-label">قیمت واحد:</span>
+                        <span class="price-value">۴,۵۰۰,۰۰۰ تومان</span>
+                    </div>
+                </div>
+
+                <div class="coupon-section">
+                    <input type="text" placeholder="کد تخفیف خود را وارد کنید">
+                    <button class="apply-coupon-btn">اعمال کوپن</button>
+                </div>
+
+            </div>
+            
+            <div class="cart-summary-box">
+                
+                <h3>خلاصه فاکتور</h3>
+                
+                <div class="summary-line">
+                    <span>مجموع قیمت محصولات:</span>
+                    <span class="summary-value">۱۱,۵۰۰,۰۰۰ تومان</span>
+                </div>
+                
+                <div class="summary-line discount-line">
+                    <span>تخفیف (کد PARS10):</span>
+                    <span class="summary-value discount-value">- ۱,۱۵۰,۰۰۰ تومان</span>
+                </div>
+
+                 <div class="summary-line total-line">
+                    <span>قابل پرداخت:</span>
+                    <span class="summary-total-value">۱۰,۳۵۰,۰۰۰ تومان</span>
+                </div>
+                
+                <button class="checkout-btn">تکمیل سفارش و پرداخت <i class="fa fa-angle-left"></i></button>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+    <footer class="footer">...</footer>
+    <script src="script.js"></script>
+
+</body>
+</html>

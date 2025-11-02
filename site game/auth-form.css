@@ -1,0 +1,100 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #0d0d0d;
+}
+
+.auth-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 400px;
+    color: #fff;
+}
+
+/* --- تب‌ها --- */
+.tabs {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #333;
+}
+
+.tab-btn {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    color: #aaa;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+    color: #ff5ca7;
+    border-bottom-color: #ff5ca7;
+    font-weight: bold;
+}
+
+/* --- فرم‌ها --- */
+.auth-form {
+    transition: opacity 0.3s;
+}
+
+.auth-form.hidden {
+    display: none;
+}
+
+.form-title {
+    font-size: 24px;
+    color: #77b3ff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #0d0d0d;
+    color: #fff;
+    font-size: 16px;
+}
+
+.auth-btn {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.auth-message {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-message.error {
+    background-color: #dc354533;
+    color: #dc3545;
+}
+
+.auth-message.success {
+    background-color: #28a74533;
+    color: #28a745;
+}

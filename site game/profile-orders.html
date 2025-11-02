@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <title>سفارشات من | پارس گیفت</title>
+    <link rel="stylesheet" href="pars-gift-site.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="user-panel-styles.css"> 
+</head>
+<body>
+    <div class="container user-panel-container">
+        <div class="panel-layout">
+            
+            <aside class="panel-sidebar">
+                <nav class="user-nav">
+                    <a href="profile.html" class="user-nav-item"><i class="fa fa-user-edit"></i><span>اطلاعات حساب</span></a>
+                    <a href="profile-orders.html" class="user-nav-item active"><i class="fa fa-history"></i><span>سفارشات من</span></a>
+                    <a href="profile-address.html" class="user-nav-item"><i class="fa fa-map-marker-alt"></i><span>آدرس‌ها</span></a>
+                    <a href="#" class="user-nav-item logout-btn" id="logoutBtn"><i class="fa fa-sign-out-alt"></i><span>خروج از حساب</span></a>
+                </nav>
+            </aside>
+            
+            <main class="panel-content">
+                <h3>لیست سفارشات</h3>
+                
+                <div class="order-list">
+                    <div class="order-card">
+                        <div class="order-info">
+                            <span class="order-id">#87452</span>
+                            <span class="order-date">تاریخ: ۱۴۰۳/۰۸/۱۲</span>
+                        </div>
+                        <div class="order-summary">
+                            <div class="summary-item">مبلغ کل: <span>۱,۲۵۰,۰۰۰ تومان</span></div>
+                        </div>
+                        <div class="order-actions">
+                            <span class="order-status status-sent">✅ تحویل داده شد</span>
+                            <a href="#" class="details-btn">مشاهده جزئیات <i class="fa fa-angle-left"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="order-card">
+                         <div class="order-info">
+                            <span class="order-id">#87453</span>
+                            <span class="order-date">تاریخ: ۱۴۰۳/۰۸/۱۱</span>
+                        </div>
+                        <div class="order-summary">
+                            <div class="summary-item">مبلغ کل: <span>۵۳۰,۰۰۰ تومان</span></div>
+                        </div>
+                        <div class="order-actions">
+                            <span class="order-status status-processing">⏳ در حال پردازش</span>
+                            <a href="#" class="details-btn">مشاهده جزئیات <i class="fa fa-angle-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="auth.js"></script> 
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود | ثبت‌نام</title>
+    
+    <link rel="stylesheet" href="pars-gift-site.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="auth-form.css"> 
+
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            
+            <div class="tabs">
+                <button id="showLogin" class="tab-btn active">ورود</button>
+                <button id="showRegister" class="tab-btn">ثبت‌نام</button>
+            </div>
+            
+            <form id="loginForm" class="auth-form active">
+                <h2 class="form-title">ورود به حساب کاربری</h2>
+
+                <label for="loginUsername" class="form-label">نام کاربری (ایمیل)</label>
+                <input type="email" id="loginUsername" class="form-input" placeholder="example@mail.com" required>
+
+                <label for="loginPassword" class="form-label">رمز عبور</label>
+                <input type="password" id="loginPassword" class="form-input" placeholder="حداقل ۶ کاراکتر" required>
+
+                <button type="submit" class="auth-btn btn-primary">ورود</button>
+                <div id="loginMessage" class="auth-message error"></div>
+            </form>
+
+            <form id="registerForm" class="auth-form hidden">
+                <h2 class="form-title">ایجاد حساب جدید</h2>
+                
+                <label for="registerUsername" class="form-label">نام کاربری (ایمیل)</label>
+                <input type="email" id="registerUsername" class="form-input" placeholder="example@mail.com" required>
+
+                <label for="registerPassword" class="form-label">رمز عبور</label>
+                <input type="password" id="registerPassword" class="form-input" placeholder="حداقل ۶ کاراکتر" required>
+
+                <label for="registerConfirmPassword" class="form-label">تکرار رمز عبور</label>
+                <input type="password" id="registerConfirmPassword" class="form-input" required>
+
+                <button type="submit" class="auth-btn btn-primary">ثبت‌نام</button>
+                <div id="registerMessage" class="auth-message error"></div>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="auth.js"></script> 
+</body>
+</html>

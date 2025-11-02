@@ -1,0 +1,142 @@
+<main class="panel-content">
+    <h3>آدرس‌های من</h3>
+
+    <link rel="stylesheet" href="user-panel-styles.css">
+    
+    <button id="showAddressFormBtn" class="auth-btn btn-primary add-address-btn">
+        <i class="fa fa-plus-circle"></i> افزودن آدرس جدید
+    </button>
+    
+    <div id="addressFormContainer" class="address-form-container hidden">
+        <h4>ثبت آدرس جدید</h4>
+        <form id="addressForm" class="info-form">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="city">استان:</label>
+                    <input type="text" id="province" class="form-input" placeholder="مثال: تهران" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">شهر:</label>
+                    <input type="text" id="city" class="form-input" placeholder="مثال: تهران" required>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="fullAddress">آدرس کامل پستی:</label>
+                <textarea id="fullAddress" rows="3" class="form-input" placeholder="خیابان، کوچه، پلاک، واحد..." required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="postalCode">کد پستی (۱۰ رقمی):</label>
+                    <input type="text" id="postalCode" class="form-input" placeholder="مثال: ۱۲۳۴۵۶۷۸۹۰" required>
+                </div>
+                <div class="form-group">
+                    <label for="receiverName">نام گیرنده:</label>
+                    <input type="text" id="receiverName" class="form-input" placeholder="نام و نام خانوادگی گیرنده" required>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="auth-btn btn-primary">ذخیره آدرس</button>
+                <button type="button" id="cancelAddressBtn" class="auth-btn btn-secondary">انصراف</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="addressList" class="address-list">
+        <div class="address-card" data-address-id="1">
+            <div class="address-details">
+                <h4>🏠 آدرس پیش‌فرض</h4>
+                <p><strong>تهران، تهران</strong> - خیابان شریعتی، کوچه بهار، پلاک ۱۰</p>
+                <p><strong>گیرنده:</strong> علی رضایی | <strong>کد پستی:</strong> ۱۲۳۴۵۶۷۸۹۰</p>
+            </div>
+            <div class="address-actions">
+                <button class="action-btn edit-btn"><i class="fa fa-edit"></i> ویرایش</button>
+                <button class="action-btn delete-btn"><i class="fa fa-trash"></i> حذف</button>
+            </div>
+        </div>
+    </div>
+    
+</main>
+
+<script src="auth.js"></script>
+<script>
+    // فرض می‌کنیم auth.js برای مدیریت ورود/خروج وجود دارد
+    if (!window.isLoggedIn) {
+        // اگر تابع isLoggedIn تعریف نشده، یک placeholder می‌گذاریم
+        window.isLoggedIn = () => true; 
+    }
+    if (!window.isLoggedIn()) {
+        window.location.href = 'login-register.html';
+    }
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        if (window.logout) window.logout();
+    });
+
+    // --- منطق نمایش/پنهان‌سازی فرم آدرس ---
+    
+    const showAddressFormBtn = document.getElementById('showAddressFormBtn');
+    const addressFormContainer = document.getElementById('addressFormContainer');
+    const cancelAddressBtn = document.getElementById('cancelAddressBtn');
+    const addressForm = document.getElementById('addressForm');
+    const addressList = document.getElementById('addressList');
+
+    // نمایش فرم
+    showAddressFormBtn.addEventListener('click', () => {
+        addressFormContainer.classList.remove('hidden');
+        showAddressFormBtn.classList.add('hidden');
+    });
+
+    // پنهان کردن فرم و پاک کردن مقادیر
+    const hideForm = () => {
+        addressFormContainer.classList.add('hidden');
+        showAddressFormBtn.classList.remove('hidden');
+        addressForm.reset();
+    };
+
+    cancelAddressBtn.addEventListener('click', hideForm);
+
+    // شبیه‌سازی افزودن آدرس (در Back-end واقعی ذخیره می‌شود)
+    addressForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // دریافت مقادیر
+        const province = document.getElementById('province').value;
+        const city = document.getElementById('city').value;
+        const fullAddress = document.getElementById('fullAddress').value;
+        const postalCode = document.getElementById('postalCode').value;
+        const receiverName = document.getElementById('receiverName').value;
+        
+        // شبیه سازی ساخت کارت جدید
+        const newAddressCard = `
+            <div class="address-card" data-address-id="${Date.now()}">
+                <div class="address-details">
+                    <h4>📦 آدرس جدید شما</h4>
+                    <p><strong>${province}، ${city}</strong> - ${fullAddress}</p>
+                    <p><strong>گیرنده:</strong> ${receiverName} | <strong>کد پستی:</strong> ${postalCode}</p>
+                </div>
+                <div class="address-actions">
+                    <button class="action-btn edit-btn"><i class="fa fa-edit"></i> ویرایش</button>
+                    <button class="action-btn delete-btn"><i class="fa fa-trash"></i> حذف</button>
+                </div>
+            </div>
+        `;
+
+        addressList.insertAdjacentHTML('afterbegin', newAddressCard);
+        
+        alert('آدرس با موفقیت ذخیره شد (شبیه‌سازی).');
+        hideForm(); 
+    });
+
+    // شبیه‌سازی حذف آدرس
+    addressList.addEventListener('click', (e) => {
+        if (e.target.closest('.delete-btn')) {
+            if (confirm('آیا مطمئنید که می‌خواهید این آدرس را حذف کنید؟')) {
+                e.target.closest('.address-card').remove();
+            }
+        }
+    });
+
+</script>
